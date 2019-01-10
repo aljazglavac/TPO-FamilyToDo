@@ -336,7 +336,8 @@ def display_task(request):
     try:
         family = Family.objects.get(qf)
     except Exception as e:
-        return render(request, 'task_display.html', {'family': None, 'tasks': None, 'error': str(e)})
+        return render(request, 'task_display.html', {'family': None, 'tasks': None, 'error': str(e),
+                                                     'child_form': child_form})
     ''' fill in the choices of the child select form with updated children for this family '''
     family_kids = [(c.child_name, c.child_name) for c in Child.objects.filter(child_family=family)] 
     if len(family_kids) != 0:
@@ -345,7 +346,6 @@ def display_task(request):
     else:
         child_form.fields['child_name'].choices = [('-------','-------')]
         child_form.fields['child_name'].initial =  ('-------','-------')
-    print(child_form.fields['child_name'].choices)
     "POST"
     if request.method == "POST":
         if childform.is_valid():
@@ -367,6 +367,28 @@ def display_task(request):
         ''' one liner array of existing tasks for family '''
         existing_tasks = [t for t in Task.objects.filter(task_family=family)]
     ''' return and render task display html with array of tasks '''
+    return render(request, 'task_display.html', {'family': family_name, 'tasks': existing_tasks,
+                                                 'child_form': child_form})
+
+@require_http_methods(["GET"])
+def display_all_tasks(request, family_username):
+    qf = Q(family_username=family_username)
+    try:
+        family = Family.objects.get(qf)
+    except Exception as e:
+        return render(request, 'task_display.html', {'family': None, 'tasks': None, 'error': str(e)})
+    
+    existing_tasks = [t for t in Task.objects.filter(task_family=family)]
+    family_name = family.family_name
+    child_form = ChildSelectForm()
+    family_kids = [(c.child_name, c.child_name) for c in Child.objects.filter(child_family=family)] 
+    if len(family_kids) != 0:
+        child_form.fields['child_name'].choices = family_kids
+        child_form.fields['child_name'].initial = family_kids[0]
+    else:
+        child_form.fields['child_name'].choices = [('-------','-------')]
+        child_form.fields['child_name'].initial =  ('-------','-------')
+
     return render(request, 'task_display.html', {'family': family_name, 'tasks': existing_tasks,
                                                  'child_form': child_form})
 
