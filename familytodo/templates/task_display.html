@@ -1,4 +1,9 @@
 <p>{{ family }}</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ child_form.as_p }}
+    <input type="submit" value="Display tasks for">
+</form>
 {% for task in tasks %}
 <a href="{% url 'complete-task' task.id %}">{{ task.task_name }}</a>
 <br>
