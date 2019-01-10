@@ -50,6 +50,10 @@ class ChildLoginForm(forms.Form):
 class ChildAddForm(forms.Form):
     child_name = forms.CharField(label="Child name", max_length=30, strip=True)
 
+''' Child select form '''
+class ChildSelectForm(forms.Form):
+    child_name = forms.ChoiceField(label="Child", choices=CHILDREN)
+
 ''' Task adding form '''
 class TaskAddForm(forms.Form):
     task_name = forms.CharField(label="Task name", max_length=30, strip=True)
