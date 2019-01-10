@@ -9,6 +9,7 @@
 </ul>
 {% endblock %}
 
+{# tasks  #}
 {% block content %}
 
 <div id="Task-display" class="container-fluid">
@@ -16,7 +17,10 @@
   <div class="row">
     {% for task in tasks %}
     <div class="col-sm col-md-4 col-lg-3">
-      <div class="card m-2 text-center">
+      <div class="card m-2 text-center" style="background-color:{% if task.task_complete == True %}green
+        {% elif task.task_importance == 'LOW' %}#FFFF31
+        {% elif task.task_importance == 'MEDIUM' %}#FFB347
+        {% elif task.task_importance == 'HIGH' %}#E34234{% endif %};">
         <h3 class="card-title">{{ task.task_name }}</h3>
         <h6 class="card-subtitle mb-2 text-muted">{{ task.task_importance }}</h6>
         <p class="card-text">Reward: {{ task.task_reward }}</p>
