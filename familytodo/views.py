@@ -354,11 +354,8 @@ def display_task(request):
             f = childform
             ''' if no children hasnt been added to the family display error '''
             if f['child_name'].data == '-------': 
-                existing_tasks = [t for t in Task.objects.filter(task_family=family)]
-                return render(request, 'task_add.html',
-                        {'task_form': task_form, 'child_form': child_form, 'schedule_form': schedule_form,
-                         'family': family_name, 'parent': parent_name,
-                         'tasks': existing_tasks, 'schedules': existing_schedules})
+                return render(request, 'task_display.html', {'family': family_name, 'tasks': [],
+                                                             'child_form': child_form})
             elif f['child_name'].data == 'All':
                 existing_tasks = [t for t in Task.objects.filter(task_family=family)]
                 return render(request, 'task_display.html', {'family': family_name, 'tasks': existing_tasks,
@@ -367,7 +364,7 @@ def display_task(request):
             child_form.fields['child_name'].initial = f['child_name'].data
             existing_tasks = [t for t in Task.objects.filter(task_family=family, task_child=child[0])]
             return render(request, 'task_display.html', {'family': family_name, 'tasks': existing_tasks,
-                                                             'child_form': child_form})
+                                                         'child_form': child_form})
         "GET"
     else:
         ''' one liner array of existing tasks for family '''
