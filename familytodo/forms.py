@@ -4,7 +4,7 @@ so it changes or can be changed every time that TaskAddForm is called
 and because of that we need to refresh choices every time we call this form '''
 from .models import Child
 from .models import (IMPORTANCE,
-                     CHILDREN,
+                     #CHILDREN,
                      ACTYPE,
                      DAYS)
 
@@ -52,7 +52,7 @@ class ChildAddForm(forms.Form):
 
 ''' Child select form '''
 class ChildSelectForm(forms.Form):
-    child_name = forms.ChoiceField(label="Child", choices=CHILDREN)
+    child_name = forms.ChoiceField(label="Child", choices=[])
 
 ''' Task adding form '''
 class TaskAddForm(forms.Form):
@@ -60,12 +60,12 @@ class TaskAddForm(forms.Form):
     task_importance = forms.ChoiceField(label="Task importance", choices=IMPORTANCE, initial='MEDIUM') 
     task_reward = forms.CharField(label="Task reward", max_length=30, strip=True, required=False)
     task_due = forms.IntegerField(label="Taks due days", min_value=0, error_messages=err_msg)
-    task_child = forms.ChoiceField(label="Child", choices=CHILDREN)
+    task_child = forms.ChoiceField(label="Child", choices=[])
 
 ''' Schedule adding form '''
 class ScheduleAddForm(forms.Form):
     sc_desc = forms.CharField(label="Schedule description", max_length=30, strip=True)
     sc_day = forms.ChoiceField(label="Day of the week", choices=DAYS, initial='MONDAY') 
     sc_time = forms.TimeField(label="Time", widget=forms.TimeInput(format='%H:%M'))
-    sc_child = forms.ChoiceField(label="Child", choices=CHILDREN)
+    sc_child = forms.ChoiceField(label="Child", choices=[])
 
