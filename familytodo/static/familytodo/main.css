@@ -136,7 +136,7 @@ body {
 /* set element styles to fit tablet and higher(desktop) */
 @media screen and (min-width: 600px) {
 	.header {
-		background-color: #35475e;
+		background-color: #233245;
 		z-index: 1;
 	}
 	.header .logo {
