@@ -449,7 +449,7 @@ def edit_task(request, task_id):
             ''' GET '''
     else:
         ''' fetch all data needed '''
-        child_form = ChildAddSelectForm()
+        child_form = ChildAddForm()
         schedule_form = ScheduleAddForm()
         family_name = request.session.get('family_name')
         family_username = request.session.get('family_username')
