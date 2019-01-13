@@ -8,23 +8,20 @@
 <a href="{% url 'logout' %}">Back</a>
 
 -->
-
-{% load static %}
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Family registration</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+		
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
 
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="{% static 'familytodo/css/style.css' %}">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 
 	<body>
@@ -37,26 +34,7 @@
 				<form action="" method="POST">
 					{% csrf_token %}
 					<h3>Family registration</h3>
-					<p>{{ error }}</p>
 
-					{{ form.non_field_errors }}
-					{% for field in form.visible_fields %}
-					<div class="form-wrapper">
-						{% if field.name == "account_type" %}
-							<h4>Account type</h4>
-							{% for choice in field %}
-								<span class="radio">{{ choice.tag }}</span>
-								{{ choice.choice_label }} <br>
-							{% endfor %}
-						{% else %}
-							{{ field.errors }}
-							{{ field }}
-							{{ field.help_text }}
-						{% endif %}
-					</div>
-					{% endfor %}
-
-					<!--
 					<div class="form-wrapper">
 							<input type="text" name="family_name" class="form-control" placeholder="Family name *"  />
 					</div>
@@ -74,15 +52,14 @@
 					</div>
 
 					<h4>Account type</h4>
-                    {{ form.account_type }}
-					-->
+                    {{ form.account_type}}
 
-
+					
 
 					<button type="submit">Register
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
-
+					
 					<div class="form-group">
 
 							<a href="{% url 'logout' %}" role="button">Back</a>
@@ -90,6 +67,6 @@
 				</form>
 			</div>
 		</div>
-
+		
 	</body>
 </html>

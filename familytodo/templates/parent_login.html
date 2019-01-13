@@ -7,9 +7,6 @@
 </form>
 -->
 
-{% load static %}
-
-
 
 <!DOCTYPE html>
 <html>
@@ -17,14 +14,14 @@
 		<meta charset="utf-8">
 		<title>Parent login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+		
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
 
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="{% static 'familytodo/css/styleParentLogin.css' %}">
+		<link rel="stylesheet" href="css/styleParentLogin.css">
 	</head>
 
 	<body>
@@ -34,31 +31,6 @@
 				<div class="image-holder">
 					<img src="http://placehold.it/450x550" alt="">
 				</div>
-				<form action="" method="POST">
-					{% csrf_token %}
-
-					<h3>Parent login</h3>
-				  	<p>{{ error }}</p>
-
-					{{ form.non_field_errors }}
-					{% for field in form.visible_fields %}
-					<div class="form-wrapper">
-						{{ field.errors }}
-						{{ field }}
-						{{ field.help_text }}
-					</div>
-					{% endfor %}
-
-					<button type="submit">Login
-						<i class="zmdi zmdi-arrow-right"></i>
-					</button>
-
-					<div class="form-group">
-
-							<a href="{% url 'logout' %}" role="button">Back</a>
-					</div>
-				</form>
-				<!--
 				<form action="" method="POST">
 					{% csrf_token %}
 					<h3>Parent login</h3>
@@ -78,15 +50,14 @@
 					<button type="submit">Login
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
-
+					
 					<div class="form-group">
 
 							<a href="{% url 'logout' %}" role="button">Back</a>
 					</div>
 				</form>
-				-->
 			</div>
 		</div>
-
+		
 	</body>
 </html>
