@@ -121,9 +121,10 @@
 
 		<!--MALU DIZAJN POPRAVIT DA SO LEPŠE IZPISANI TASKI-->
 		<div id="Task-display" class="container-fluid">
+
 			<div class="row">
 				{% for task in tasks %}
-					<div class="col-sm col-md-4 col-lg-3">
+				<div class="col-sm col-md-4 col-lg-3">
 					<div class="card m-2" style="background-color:{% if task.task_complete == True %}#04B404
 					{% elif task.task_importance == 'LOW' %}#FFFF31
 					{% elif task.task_importance == 'MEDIUM' %}#FFB347
@@ -165,6 +166,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a> 
 								</div>
 							</div>
 							{% endfor %}
@@ -177,6 +179,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -194,6 +197,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -206,6 +210,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -218,6 +223,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -230,6 +236,7 @@
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
@@ -241,7 +248,8 @@
 								<div class="card-body">
 									<h3 class="card-title">{{ s }}</h3>
 									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
-									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_child }}</h6>
+									<h6 class="card-subtitle mb-2 text-muted">{{ s.schedule_time }}</h6>
+									<a href="{% url 'delete-schedule' s.id %}" class="card-link">Delete</a>
 								</div>
 							</div>
 							{% endfor %}
