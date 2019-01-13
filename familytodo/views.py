@@ -182,7 +182,15 @@ def add_task(request):
                      'tasks': [], 'schedules': [], 'error': str(e)})
         ''' extract existing task for above family '''
         existing_tasks = [t for t in Task.objects.filter(task_family=family)]
-        existing_schedules = [s for s in Schedule.objects.filter(schedule_family=family)]
+        monday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='MONDAY').order_by('schedule_time')]
+        tuesday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='TUESDAY').order_by('schedule_time')]
+        wednesday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='WEDNESDAY').order_by('schedule_time')]
+        thursday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='THURSDAY').order_by('schedule_time')]
+        friday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='FRIDAY').order_by('schedule_time')]
+        saturday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='SATURDAY').order_by('schedule_time')]
+        sunday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='SUNDAY').order_by('schedule_time')]
+        existing_schedules = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+        #existing_schedules = [s for s in Schedule.objects.filter(schedule_family=family)]
         ''' first check if child can be added  to the family and then if we can add task '''
         ''' if children adding form is valid save that child into loged in family '''
         if childform.is_valid():
@@ -268,7 +276,15 @@ def add_task(request):
                      'tasks': [], 'schedules': [], 'error': str(e)})
         family_kids = [(c.child_name, c.child_name) for c in Child.objects.filter(child_family=family)] 
         existing_tasks = [t for t in Task.objects.filter(task_family=family)]
-        existing_schedules = [s for s in Schedule.objects.filter(schedule_family=family)]
+        monday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='MONDAY').order_by('schedule_time')]
+        tuesday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='TUESDAY').order_by('schedule_time')]
+        wednesday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='WEDNESDAY').order_by('schedule_time')]
+        thursday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='THURSDAY').order_by('schedule_time')]
+        friday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='FRIDAY').order_by('schedule_time')]
+        saturday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='SATURDAY').order_by('schedule_time')]
+        sunday = [s for s in Schedule.objects.filter(schedule_family=family).filter(schedule_day='SUNDAY').order_by('schedule_time')]
+        existing_schedules = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+        #existing_schedules = [s for s in Schedule.objects.filter(schedule_family=family)]
         ''' if family has no children added yet display ------ else fill choices with family children '''
         if len(family_kids) != 0:
             task_form.fields['task_child'].choices = family_kids
@@ -460,6 +476,7 @@ def edit_task(request, task_id):
             return redirect('task-add')
         family_kids = [(c.child_name, c.child_name) for c in Child.objects.filter(child_family=family)] 
         existing_tasks = [t for t in Task.objects.filter(task_family=family) if t != task]
+        
         existing_schedules = [s for s in Schedule.objects.filter(schedule_family=family)]
         ''' existing form on the site fill with data from db and display it on control panel '''
         task_form = TaskAddForm(initial={'task_name': task.task_name,
@@ -469,7 +486,7 @@ def edit_task(request, task_id):
                                          'task_child': task.task_child})
         task_form.fields['task_child'].choices = family_kids
         ''' return render html with "new" form, form with existing data that was already in db '''
-        return render(request, 'task_add.html',
+        return render(request, 'task_edit.html',
                 {'task_form': task_form, 'child_form': child_form, 'schedule_form': schedule_form,
                  'family': family_name, 'parent': parent_name,
                  'tasks': existing_tasks, 'schedules': existing_schedules})
