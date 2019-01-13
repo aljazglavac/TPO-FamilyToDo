@@ -16,6 +16,8 @@
     <meta name="author" content="">
 
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="{% static 'familytodo/landstyle.css' %}">
+
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -40,61 +42,46 @@
 
       <!-- Project One -->
       <div class="row">
-        <div class="col-md-8">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-5" src="{% static 'familytodo/family.jpg' %}" alt="">
+        <div class="col-md-12">        
+          <a href="{% url 'family-register' %}">
+            <img class="img-fluid rounded mb-3 mb-md-5 slika" src="{% static 'familytodo/family.jpg' %}" alt="">
+            <h3 class="centered">Family register</h3>
           </a>
-        </div>
-        <div class="col-md-4">
-          <h3>Family register</h3>
-          <a class="btn btn-primary" href="{% url 'family-register' %}">Family Register</a>
         </div>
       </div>
       <!-- /.row -->
 
-      <hr>
+      <br>
 
       <!-- Project Two -->
       <div class="row">
-        <div class="col-md-8">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'familytodo/parents.jpg' %}" alt="">
+        <div class="col-md-12">
+          <a href="{% url 'parent-login' %}">
+            <img class="img-fluid rounded mb-3 mb-md-0 slika" src="{% static 'familytodo/parents.jpg' %}" alt="">
+            <h3 class="centered">Parent Login</h3>
           </a>
-        </div>
-        <div class="col-md-4">
-          <h3>Parent Login</h3>
-          <a class="btn btn-primary" href="{% url 'parent-login' %}">Parent Login</a>
         </div>
       </div>
       <!-- /.row -->
 
-      <hr>
+      <br>
 
       <!-- Project Three -->
       <div class="row">
-        <div class="col-md-8">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="{% static 'familytodo/children.jpg' %}" alt="">
+        <div class="col-md-12">
+          <a href="{% url 'child-login' %}">
+            <img class="img-fluid rounded mb-3 mb-md-0 slika" src="{% static 'familytodo/children.jpg' %}" alt="">
+            <h3 class="centered">Children login</h3>
           </a>
-        </div>
-        <div class="col-md-4">
-          <h3>Children login</h3>
-          <a class="btn btn-primary" href="{% url 'child-login' %}">Children Login</a>
         </div>
       </div>
       <!-- /.row -->
-
-      <hr>
 
       
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-      </div>
-      <!-- /.container -->
-    </footer>
+
 
     <!-- Bootstrap core JavaScript 
     <script src="vendor/jquery/jquery.min.js"></script>
