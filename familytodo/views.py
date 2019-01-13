@@ -433,6 +433,13 @@ def delete_complete(request):
     ''' redirect back to parent control panel site/task adding site '''
     return redirect('task-add')
 
+@require_http_methods(["GET"])
+def delete_schedule(request, schedule_id):
+    ''' delete schedule '''
+    Schedule.objects.filter(pk=schedule_id).delete()
+    ''' redirect back to parent control panel site/task adding site '''
+    return redirect('task-add')
+
 @require_http_methods(["GET", "POST"])
 def edit_task(request, task_id):
     ''' from db get task by its id '''
