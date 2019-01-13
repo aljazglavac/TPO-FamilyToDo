@@ -76,7 +76,7 @@ class Task(models.Model):
 
 DAYS = (
     ('MONDAY', 'Monday'),
-    ('TUESDAY', 'Tudesday'),
+    ('TUESDAY', 'Tuesday'),
     ('WEDENSDAY', 'Wedensday'),
     ('THURSDAY', 'Thursday'),
     ('FRIDAY', 'Friday'),
