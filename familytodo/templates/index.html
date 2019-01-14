@@ -23,10 +23,10 @@
 
     <title>Family To Do</title>
 
-    <!-- Bootstrap core CSS 
+    <!-- Bootstrap core CSS
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 -->
-    <!-- Custom styles for this template 
+    <!-- Custom styles for this template
     <link href="css/1-col-portfolio.css" rel="stylesheet">
 -->
   </head>
@@ -34,56 +34,59 @@
   <body>
 
     <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading -->
-      <h1 class="my-4">Family To Do
-      </h1>
-
-      <!-- Project One -->
-      <div class="row">
-        <div class="col-md-12">        
-          <a href="{% url 'family-register' %}">
-            <img class="img-fluid rounded mb-3 mb-md-5 slika" src="{% static 'familytodo/family.jpg' %}" alt="">
-            <h3 class="centered">Family register</h3>
-          </a>
+    <div class="container-fluid">
+      <div class="text-center">
+      <h1 style="font-size:8vh;">Family To Do</h1>
+      </div>
+      <div class="page">
+        <div class="content">
+          <div class="circle">
+            <div class="circle_title">
+              <h2>Parent register</h2>
+            </div>
+            <div class="circle_inner">
+              <div class="circle_inner__layer">
+                <a href="{% url 'family-register' %}">
+                <img src="{% static 'familytodo/family.jpg' %}"/>
+                </a>
+              </div>
+            </div>
+            <div class="content_shadow"></div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="circle">
+            <div class="circle_title">
+              <h2>Parent login</h2>
+            </div>
+            <div class="circle_inner">
+              <div class="circle_inner__layer">
+                <a href="{% url 'parent-login' %}">
+                <img src="{% static 'familytodo/parent5.jpeg' %}"/>
+                </a>
+              </div>
+            </div>
+            <div class="content_shadow"></div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="circle">
+            <div class="circle_title">
+              <h2>Child login</h2>
+            </div>
+            <div class="circle_inner">
+              <div class="circle_inner__layer">
+                <a href="{% url 'child-login' %}">
+                <img src="{% static 'familytodo/children.jpg' %}"/>
+                </a>
+              </div>
+            </div>
+            <div class="content_shadow"></div>
+          </div>
         </div>
       </div>
-      <!-- /.row -->
 
-      <br>
-
-      <!-- Project Two -->
-      <div class="row">
-        <div class="col-md-12">
-          <a href="{% url 'parent-login' %}">
-            <img class="img-fluid rounded mb-3 mb-md-0 slika" src="{% static 'familytodo/parents.jpg' %}" alt="">
-            <h3 class="centered">Parent Login</h3>
-          </a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <br>
-
-      <!-- Project Three -->
-      <div class="row">
-        <div class="col-md-12">
-          <a href="{% url 'child-login' %}">
-            <img class="img-fluid rounded mb-3 mb-md-0 slika" src="{% static 'familytodo/children.jpg' %}" alt="">
-            <h3 class="centered">Children login</h3>
-          </a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      
-    <!-- /.container -->
-
-    <!-- Footer -->
-
-
-    <!-- Bootstrap core JavaScript 
+    <!-- Bootstrap core JavaScript
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 -->
